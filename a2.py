@@ -31,10 +31,24 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
             return None
 
         # 2) if the current thing in the pattern is a %
+        
         # WARNING: this condition contains the bulk of the code for the assignment
         # If you get stuck on this one, we encourage you to attempt the other conditions
         #   and come back to this one afterwards
+        elif pattern[pind]=="%":
+            if pind==len(pattern)-1:
+                combined= " ".join(source[sind:])
+                result.append(combined)
+                return result
+            else:
+                pind+=1
+                slocation=sind 
+                while pattern[pind]!= source[sind]:
+                    sind+=1
 
+                print(sind)
+                result.append (" ".join(source[slocation:sind]))
+                
         # 3) if we reached the end of the source but not the pattern
         elif sind== len(source):
             print("reached end of source, but not pattern- return now")
